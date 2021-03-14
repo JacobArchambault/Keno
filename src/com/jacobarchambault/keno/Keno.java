@@ -10,6 +10,10 @@ import javax.swing.border.Border;
 // 15 Mar 2021
 // The purpose of this program is to create a workable Keno game
 public class Keno extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
 	Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
 	JButton[] jButtons = new JButton[80];
