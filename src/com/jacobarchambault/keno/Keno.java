@@ -24,6 +24,7 @@ public class Keno extends JFrame {
 	ButtonGroup dollarGroup = new ButtonGroup();
 	JRadioButton[] dollars = new JRadioButton[6];
 	ButtonGroup spotsGroup = new ButtonGroup();
+	JButton[] spots = new JButton[12];
 	public static void main(String[] args) {
 	}
 
