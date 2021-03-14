@@ -1,5 +1,7 @@
 package com.jacobarchambault.keno;
 
+import java.awt.Font;
+
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -15,16 +17,17 @@ public class Keno extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
-	Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
-	JButton[] jButtons = new JButton[80];
-	JPanel buttonPanel1;
-	JPanel buttonPanel2;
-	JPanel middlePanel;
-	ButtonGroup dollarGroup = new ButtonGroup();
-	JRadioButton[] dollars = new JRadioButton[6];
-	ButtonGroup spotsGroup = new ButtonGroup();
-	JButton[] spots = new JButton[12];
+	private Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
+	private Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
+	private JButton[] jButtons = new JButton[80];
+	private JPanel buttonPanel1;
+	private JPanel buttonPanel2;
+	private JPanel middlePanel;
+	private ButtonGroup dollarGroup = new ButtonGroup();
+	private JRadioButton[] dollars = new JRadioButton[6];
+	private ButtonGroup spotsGroup = new ButtonGroup();
+	private JButton[] spots = new JButton[12];
+	private Font font = new Font("Arial", Font.BOLD, 18);
 	public static void main(String[] args) {
 	}
 
