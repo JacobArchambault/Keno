@@ -4,8 +4,10 @@ import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.border.Border;
@@ -29,6 +31,7 @@ public class Keno extends JFrame {
 	private JButton[] spots = new JButton[12];
 	private Font font = new Font("Arial", Font.BOLD, 38);
 	private Font font2 = new Font("Arial", Font.BOLD, 18);
+	private JLabel luckyLabel = new JLabel(new ImageIcon("images/Lucky.png"));
 	public static void main(String[] args) {
 	}
 
