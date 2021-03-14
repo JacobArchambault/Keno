@@ -5,6 +5,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JRadioButton;
 import javax.swing.border.Border;
 // Jacob Archambault
 // 15 Mar 2021
@@ -21,6 +22,7 @@ public class Keno extends JFrame {
 	JPanel buttonPanel2;
 	JPanel middlePanel;
 	ButtonGroup dollarGroup = new ButtonGroup();
+	JRadioButton[] dollars = new JRadioButton[6];
 	public static void main(String[] args) {
 	}
 
