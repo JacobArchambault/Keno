@@ -1,6 +1,7 @@
 package com.jacobarchambault.keno;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ public class Keno extends JFrame {
 	JPanel buttonPanel1;
 	JPanel buttonPanel2;
 	JPanel middlePanel;
+	ButtonGroup dollarGroup = new ButtonGroup();
 	public static void main(String[] args) {
 	}
 
