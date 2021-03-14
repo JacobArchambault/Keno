@@ -39,6 +39,24 @@ public class Keno extends JFrame {
 	
 	public Keno() {
 		this.setLayout(new GridLayout(3, 1));
+		createButtons();
+		createRadioButtons();
+		createPanels();
+	}
+
+	private void createPanels() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void createRadioButtons() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	private void createButtons() {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
