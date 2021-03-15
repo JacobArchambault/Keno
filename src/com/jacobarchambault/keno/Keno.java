@@ -35,6 +35,7 @@ public class Keno extends JFrame {
 	private JLabel luckyLabel = new JLabel(new ImageIcon("images/Lucky.png"));
 
 	public static void main(String[] args) {
+		new Keno();
 	}
 	
 	public Keno() {
@@ -42,6 +43,13 @@ public class Keno extends JFrame {
 		createButtons();
 		createRadioButtons();
 		createPanels();
+		addPanels();
+	}
+
+	private void addPanels() {
+		this.add(buttonPanel1);
+		this.add(middlePanel);
+		this.add(buttonPanel2);
 	}
 
 	private void createPanels() {
