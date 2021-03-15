@@ -108,4 +108,12 @@ public class Keno extends JFrame {
 		}
 	}
 
+	class TopPanel extends JPanel{
+		TopPanel(){
+			this.setLayout(new GridLayout(4, 10));
+			for(int i = 0; i < 40; i++) {
+				this.add(buttons[i]);
+			}
+		}
+	}
 }
