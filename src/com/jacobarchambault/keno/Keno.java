@@ -29,7 +29,7 @@ public class Keno extends JFrame {
 	private Border spotsBorder = BorderFactory.createTitledBorder(
 			"Choose numbers to play");
 	private JButton[] buttons = new JButton[80];
-	private JPanel buttonPanel1;
+	private JPanel buttonPanel1; 
 	private JPanel buttonPanel2;
 	private JPanel middlePanel;
 	private ButtonGroup dollarGroup = new ButtonGroup();
