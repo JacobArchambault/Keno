@@ -77,9 +77,9 @@ public class Keno extends JFrame {
 	}
 
 	private void createPanels() {
-		buttonPanel1 = new JPanel();
-		buttonPanel2 = new JPanel();
-		middlePanel = new JPanel();
+		buttonPanel1 = new TopPanel();
+		buttonPanel2 = new MiddlePanel();
+		middlePanel = new BottomPanel();
 	}
 
 	private void createRadioButtons() {
