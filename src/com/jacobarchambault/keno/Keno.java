@@ -48,7 +48,10 @@ public class Keno extends JFrame {
 
 	public static void main(
 			String[] args) {
-		new Keno();
+		Keno frame = new Keno();
+		frame.setTitle("Let's play Keno");
+		frame.setSize(900, 750);
+		frame.setVisible(true);
 	}
 
 	public Keno() {
