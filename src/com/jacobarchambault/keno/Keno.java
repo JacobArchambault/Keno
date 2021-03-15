@@ -78,8 +78,8 @@ public class Keno extends JFrame {
 
 	private void createPanels() {
 		buttonPanel1 = new TopPanel();
-		buttonPanel2 = new MiddlePanel();
-		middlePanel = new BottomPanel();
+		middlePanel = new MiddlePanel();
+		buttonPanel2 = new BottomPanel();
 	}
 
 	private void createRadioButtons() {
@@ -121,7 +121,7 @@ public class Keno extends JFrame {
 	class BottomPanel extends JPanel{
 		BottomPanel(){
 			this.setLayout(new GridLayout(4, 10));
-			for(int i = 0; i < 40; i++) {
+			for(int i = 40; i < 80; i++) {
 				this.add(buttons[i]);
 			}			
 		}
