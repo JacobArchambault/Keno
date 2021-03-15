@@ -26,7 +26,7 @@ public class Keno extends JFrame {
 			"Choose bet amount ($)");
 	private Border spotsBorder = BorderFactory.createTitledBorder(
 			"Choose numbers to play");
-	private JButton[] jButtons = new JButton[80];
+	private JButton[] buttons = new JButton[80];
 	private JPanel buttonPanel1;
 	private JPanel buttonPanel2;
 	private JPanel middlePanel;
@@ -77,19 +77,26 @@ public class Keno extends JFrame {
 	}
 
 	private void createRadioButtons() {
-		// TODO Auto-generated method stub
-
+		dollars[0] = new JRadioButton("1");
+		dollars[1] = new JRadioButton("2");
+		dollars[2] = new JRadioButton("3");
+		dollars[3] = new JRadioButton("5");
+		dollars[4] = new JRadioButton("10");
+		dollars[5] = new JRadioButton("20");
+		for (int i = 0; i < dollars.length; i++) {
+			dollars[i].setFont(font2);
+			dollarGroup.add(dollars[i]);
+		}
 	}
 
 	private void createButtons() {
-		for (int i = 0; i < spots.length; i++) {
-			spots[i] = new JButton(String.valueOf(i + 1));
-			spots[i].setHorizontalAlignment(JButton.CENTER);
-			spots[i].setFont(font);
-			spots[i].setBackground(getBackground().blue);
-			spots[i].setForeground(getForeground().yellow);
-			}
-		
+		for (int i = 0; i < buttons.length; i++) {
+			buttons[i] = new JButton(String.valueOf(i + 1));
+			buttons[i].setHorizontalAlignment(JButton.CENTER);
+			buttons[i].setFont(font);
+			buttons[i].setBackground(getBackground().blue);
+			buttons[i].setForeground(getForeground().yellow);
+		}
 	}
 
 }
