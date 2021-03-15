@@ -72,8 +72,9 @@ public class Keno extends JFrame {
 	}
 
 	private void createPanels() {
-		// TODO Auto-generated method stub
-
+		buttonPanel1 = new JPanel();
+		buttonPanel2 = new JPanel();
+		middlePanel = new JPanel();
 	}
 
 	private void createRadioButtons() {
