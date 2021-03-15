@@ -87,6 +87,11 @@ public class Keno extends JFrame {
 			dollars[i].setFont(font2);
 			dollarGroup.add(dollars[i]);
 		}
+		for (int i = 0; i < spots.length; i++) {
+			spots[i] = new JButton(String.valueOf(i + 1));
+			spotsGroup.add(spots[i]);
+			spots[i].setFont(font2);
+		}
 	}
 
 	private void createButtons() {
