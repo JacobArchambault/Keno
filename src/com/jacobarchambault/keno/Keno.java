@@ -1,6 +1,8 @@
 package com.jacobarchambault.keno;
 
 import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 
@@ -117,10 +119,41 @@ public class Keno extends JFrame {
 		}
 	}
 	class BottomPanel extends JPanel{
-		this.setLayout(new GridLayout(4, 10));
-		for(int i = 0; i < 40; i++) {
-			this.add(buttons[i]);
+		BottomPanel(){
+			this.setLayout(new GridLayout(4, 10));
+			for(int i = 0; i < 40; i++) {
+				this.add(buttons[i]);
+			}			
 		}
-		
+	}
+	class MiddlePanel extends JPanel{
+		JPanel dollarPanel = new JPanel(new GridLayout(6, 1));			
+		JPanel spotsPanel = new JPanel(new GridLayout(6, 2));			
+		MiddlePanel(){
+			this.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
+			this.setBackground(getBackground().white);
+			dollarPanel.setBorder(radioBorder);
+			dollarPanel.setPreferredSize(new Dimension(175,200) );			
+			for (int i = 0; i < dollars.length; i++) {
+				dollarPanel.add(dollars[i]);
+			}
+			spotsPanel.setBorder(spotsBorder);
+			spotsPanel.setPreferredSize(new Dimension(175,200) );			
+			spotsPanel.add(spots[0]);
+			spotsPanel.add(spots[6]);
+			spotsPanel.add(spots[1]);
+			spotsPanel.add(spots[7]);
+			spotsPanel.add(spots[2]);
+			spotsPanel.add(spots[8]);
+			spotsPanel.add(spots[3]);
+			spotsPanel.add(spots[9]);
+			spotsPanel.add(spots[4]);
+			spotsPanel.add(spots[10]);
+			spotsPanel.add(spots[5]);
+			spotsPanel.add(spots[11]);
+			this.add(spotsPanel);
+			this.add(luckyLabel);
+			this.add(dollarPanel);
+		}
 	}
 }
