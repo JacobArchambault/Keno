@@ -35,7 +35,7 @@ public class Keno extends JFrame {
 	private ButtonGroup dollarGroup = new ButtonGroup();
 	private JRadioButton[] dollars = new JRadioButton[6];
 	private ButtonGroup spotsGroup = new ButtonGroup();
-	private JButton[] spots = new JButton[12];
+	private JRadioButton[] spots = new JRadioButton[12];
 	private Font font = new Font(
 			"Arial",
 			Font.BOLD,
@@ -94,7 +94,7 @@ public class Keno extends JFrame {
 			dollarGroup.add(dollars[i]);
 		}
 		for (int i = 0; i < spots.length; i++) {
-			spots[i] = new JButton(String.valueOf(i + 1));
+			spots[i] = new JRadioButton(String.valueOf(i + 1));
 			spotsGroup.add(spots[i]);
 			spots[i].setFont(font2);
 		}
