@@ -105,12 +105,19 @@ public class Keno extends JFrame {
 			buttons[i] = new JButton(String.valueOf(i + 1));
 			buttons[i].setHorizontalAlignment(JButton.CENTER);
 			buttons[i].setFont(font);
-			buttons[i].setBackground(getBackground().blue);
-			buttons[i].setForeground(getForeground().yellow);
+			getBackground();
+			buttons[i].setBackground(Color.blue);
+			getForeground();
+			buttons[i].setForeground(Color.yellow);
 		}
 	}
 
 	class TopPanel extends JPanel{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		TopPanel(){
 			this.setLayout(new GridLayout(4, 10));
 			for(int i = 0; i < 40; i++) {
@@ -119,6 +126,11 @@ public class Keno extends JFrame {
 		}
 	}
 	class BottomPanel extends JPanel{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
+
 		BottomPanel(){
 			this.setLayout(new GridLayout(4, 10));
 			for(int i = 40; i < 80; i++) {
@@ -127,11 +139,16 @@ public class Keno extends JFrame {
 		}
 	}
 	class MiddlePanel extends JPanel{
+		/**
+		 * 
+		 */
+		private static final long serialVersionUID = 1L;
 		JPanel dollarPanel = new JPanel(new GridLayout(6, 1));			
 		JPanel spotsPanel = new JPanel(new GridLayout(6, 2));			
 		MiddlePanel(){
 			this.setLayout(new FlowLayout(FlowLayout.CENTER,10,10));
-			this.setBackground(getBackground().white);
+			getBackground();
+			this.setBackground(Color.white);
 			dollarPanel.setBorder(radioBorder);
 			dollarPanel.setPreferredSize(new Dimension(175,200) );			
 			for (int i = 0; i < dollars.length; i++) {
