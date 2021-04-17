@@ -171,6 +171,13 @@ public class Keno extends JFrame {
 		menuBar.add(Box.createHorizontalGlue());
 		menuBar.add(help);
 		menuBar.add(Box.createHorizontalGlue());
+		file.add(exit);
+		help.add(info);
+		for (int i = 0; i < payoffs.length; i++) {
+			payoffs[i] = new JMenuItem(String.valueOf(i + 1) + "   Spots Selected");
+			payScale.add(payoffs[i]);
+			payoffs[i].setFont(font2);
+		}
 	}
 
 	private void addPanels() {
