@@ -13,6 +13,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
@@ -99,6 +102,7 @@ public class Keno extends JFrame {
 		frame.setVisible(true);
 	}
 
+	// 2
 	private int count = 0;
 	private int correct = 0;
 	private int amountBet = 0;
@@ -106,13 +110,25 @@ public class Keno extends JFrame {
 	private double amountWon = 0;
 	private int counter = 0;
 	private int i = 0;
-	
+	// 3
 	private JButton betMaxButton = new JButton("Bet max amount");
 	private JButton eraseButton = new JButton("Clear board");
 	private JButton startButton = new JButton("Generate numbers");
+	//4
 	private ImageIcon icon = new ImageIcon("images/checkmark.gif");
 
+	// 5
 	private ArrayList<String> picks = new ArrayList<>();
+	
+	//6 
+	JMenuBar menuBar = new JMenuBar();
+	JMenu file = new JMenu("File");
+	JMenu help = new JMenu("Help");
+	JMenu payScale = new JMenu("Payoffs");
+	JMenuItem exit = new JMenuItem("Exit Program");
+	JMenuItem info = new JMenuItem("How to play Keno");
+	JMenuItem[] payoffs = new JMenuItem[12];
+	
 	private final Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
 	private final Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
 	private final JButton[] buttons = new JButton[80];
