@@ -5,6 +5,7 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
 import javax.swing.ButtonGroup;
@@ -111,6 +112,7 @@ public class Keno extends JFrame {
 	private JButton startButton = new JButton("Generate numbers");
 	private ImageIcon icon = new ImageIcon("images/checkmark.gif");
 
+	private ArrayList<String> picks = new ArrayList<>();
 	private final Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
 	private final Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
 	private final JButton[] buttons = new JButton[80];
