@@ -8,6 +8,7 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -114,13 +115,13 @@ public class Keno extends JFrame {
 	private JButton betMaxButton = new JButton("Bet max amount");
 	private JButton eraseButton = new JButton("Clear board");
 	private JButton startButton = new JButton("Generate numbers");
-	//4
+	// 4
 	private ImageIcon icon = new ImageIcon("images/checkmark.gif");
 
 	// 5
 	private ArrayList<String> picks = new ArrayList<>();
-	
-	//6 
+
+	// 6
 	private JMenuBar menuBar = new JMenuBar();
 	private JMenu file = new JMenu("File");
 	private JMenu help = new JMenu("Help");
@@ -128,7 +129,7 @@ public class Keno extends JFrame {
 	private JMenuItem exit = new JMenuItem("Exit Program");
 	private JMenuItem info = new JMenuItem("How to play Keno");
 	private JMenuItem[] payoffs = new JMenuItem[12];
-	
+
 	private final Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
 	private final Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
 	private final JButton[] buttons = new JButton[80];
@@ -149,10 +150,27 @@ public class Keno extends JFrame {
 
 	public Keno() {
 		setLayout(new GridLayout(3, 1));
+		createMenu();
 		createButtons();
 		createRadioButtons();
 		createPanels();
 		addPanels();
+	}
+
+	private void createMenu() {
+		setJMenuBar(menuBar);
+		menuBar.add(file);
+		menuBar.add(Box.createHorizontalGlue());
+		menuBar.add(betMaxButton);
+		menuBar.add(Box.createHorizontalGlue());
+		menuBar.add(eraseButton);
+		menuBar.add(Box.createHorizontalGlue());
+		menuBar.add(startButton);
+		menuBar.add(Box.createHorizontalGlue());
+		menuBar.add(payScale);
+		menuBar.add(Box.createHorizontalGlue());
+		menuBar.add(help);
+		menuBar.add(Box.createHorizontalGlue());
 	}
 
 	private void addPanels() {
@@ -170,6 +188,7 @@ public class Keno extends JFrame {
 			buttons[i].setBackground(Color.blue);
 			getForeground();
 			buttons[i].setForeground(Color.yellow);
+			buttons[i].addActionListener(new ButtonListener());
 		}
 	}
 
@@ -189,11 +208,13 @@ public class Keno extends JFrame {
 		for (final JRadioButton dollar : dollars) {
 			dollar.setFont(font2);
 			dollarGroup.add(dollar);
+			dollars[i].addItemListener(new RadioListener());
 		}
 		for (var i = 0; i < spots.length; i++) {
 			spots[i] = new JRadioButton(String.valueOf(i + 1));
 			spotsGroup.add(spots[i]);
 			spots[i].setFont(font2);
+			spots[i].addItemListener(new RadioListener());
 		}
 	}
 }
