@@ -204,6 +204,9 @@ public class Keno extends JFrame {
 		betMaxButton.setFont(font2);
 		eraseButton.setFont(font2);
 		startButton.setFont(font2);
+		for (int i = 0; i < payoffs.length; i++) {
+			payoffs[i].addActionListener(new Listener());;
+		}
 	}
 
 	private void addPanels() {
