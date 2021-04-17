@@ -5,6 +5,8 @@ import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -17,6 +19,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
@@ -26,6 +29,36 @@ import javax.swing.border.Border;
 // 15 Mar 2021
 // The purpose of this program is to create a workable Keno game
 public class Keno extends JFrame {
+	class ButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			for (int i = 0; i < spots.length; i++) {
+				if (spots[i].isSelected()) {
+					numbersBet = Integer.parseInt(spots[i].getText());
+				}
+
+			}
+			if (count < numbersBet) {
+				count++;
+				if (e.getSource() instanceof JButton) {
+					((JButton) e.getSource()).setIcon(icon);
+					String numberLabel = ((JButton) e.getSource()).getText();
+					picks.add(numberLabel);
+					((JButton) e.getSource()).setText("");
+				}
+			} else if (count == 0) {
+				JOptionPane.showMessageDialog(null, "You have to choose to bet at least one number");
+				numbersBet = 0;
+			} else {
+				JOptionPane.showMessageDialog(null, "You have already chosen your " + numbersBet
+						+ " numbers.\nYou cannot choose any additional numbers");
+			}
+
+		}
+
+	}
+
 	class BottomPanel extends JPanel {
 		/**
 		 *
@@ -187,26 +220,39 @@ public class Keno extends JFrame {
 		help.setFont(font2);
 		exit.setFont(font2);
 		info.setFont(font2);
-		
+
 		// set Mnemonics
 		file.setMnemonic('F');
 		help.setMnemonic('H');
 		exit.setMnemonic('E');
 		info.setMnemonic('K');
 		payScale.setMnemonic('P');
-		
+
 		// add action listeners
 		info.addActionListener(new Listener());
 		exit.addActionListener(new Listener());
 		betMaxButton.addActionListener(new Listener());
-		
+
 		// set more fonts
 		betMaxButton.setFont(font2);
 		eraseButton.setFont(font2);
 		startButton.setFont(font2);
 		for (int i = 0; i < payoffs.length; i++) {
-			payoffs[i].addActionListener(new Listener());;
+			payoffs[i].addActionListener(new Listener());
+			;
 		}
+	}
+
+	private void clear() {
+	}
+
+	private void generateNumbers() {
+	}
+
+	private void displayWinnings() {
+	}
+
+	private void populateArrayList() {
 	}
 
 	private void addPanels() {
