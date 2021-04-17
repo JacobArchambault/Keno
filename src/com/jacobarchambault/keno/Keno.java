@@ -43,9 +43,11 @@ public class Keno extends JFrame {
 			if (exit.getModel().isPressed()) {
 				System.exit(0);
 			}
+			if (payoffs[0].getModel().isPressed()) {
+
+			}
 
 		}
-
 	}
 
 	class ButtonListener implements ActionListener {
