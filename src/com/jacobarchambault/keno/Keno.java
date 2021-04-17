@@ -29,6 +29,25 @@ import javax.swing.border.Border;
 // 15 Mar 2021
 // The purpose of this program is to create a workable Keno game
 public class Keno extends JFrame {
+	class Listener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if (betMaxButton.getModel().isPressed()) {
+				dollars[5].setSelected(true);
+			}
+			if (info.getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null,
+						"Click the numbers you wish to bet (1-12).\\nClick Generate Numbers\\n20 Random numbers will be chosen and highlighted in Red.\\nA message will display as to whether you have won.\\nSee Help > Payoffs for a list of payoffs");
+			}
+			if (exit.getModel().isPressed()) {
+				System.exit(0);
+			}
+
+		}
+
+	}
+
 	class ButtonListener implements ActionListener {
 
 		@Override
