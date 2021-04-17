@@ -121,13 +121,13 @@ public class Keno extends JFrame {
 	private ArrayList<String> picks = new ArrayList<>();
 	
 	//6 
-	JMenuBar menuBar = new JMenuBar();
-	JMenu file = new JMenu("File");
-	JMenu help = new JMenu("Help");
-	JMenu payScale = new JMenu("Payoffs");
-	JMenuItem exit = new JMenuItem("Exit Program");
-	JMenuItem info = new JMenuItem("How to play Keno");
-	JMenuItem[] payoffs = new JMenuItem[12];
+	private JMenuBar menuBar = new JMenuBar();
+	private JMenu file = new JMenu("File");
+	private JMenu help = new JMenu("Help");
+	private JMenu payScale = new JMenu("Payoffs");
+	private JMenuItem exit = new JMenuItem("Exit Program");
+	private JMenuItem info = new JMenuItem("How to play Keno");
+	private JMenuItem[] payoffs = new JMenuItem[12];
 	
 	private final Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
 	private final Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
