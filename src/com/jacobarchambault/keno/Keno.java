@@ -44,7 +44,40 @@ public class Keno extends JFrame {
 				System.exit(0);
 			}
 			if (payoffs[0].getModel().isPressed()) {
-
+				JOptionPane.showMessageDialog(null, "Match\n1: $2.50");
+			}
+			if (payoffs[1].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n1: $1.00\n2: $5");
+			}
+			if (payoffs[2].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n2: $2.50\n3: $25");
+			}
+			if (payoffs[3].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n2: $1.00\n3: $4\n5: $100");
+			}
+			if (payoffs[4].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n3: $2.00\n4: $20\n5: $450");
+			}
+			if (payoffs[5].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n3: $1.00\n4: $7\n5: $50\n6: $1,600");
+			}
+			if (payoffs[6].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n3: $1.00\n4: $3\n5: $20\n6: $100\n7: $5,000");
+			}
+			if (payoffs[7].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n4: $2.00\n5: $10\n6: $50\n7: $1,000\n8: $15,000");
+			}
+			if (payoffs[8].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n4: $1.00\n5: $5\n6: $25\n7: $200\n8: $4,000\n9: $40,000");
+			}
+			if (payoffs[9].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n0: $2.00\n5: $2.00\n6: $20\n7: $80\n8: $500\n9: $10,000\n10: 100,000");
+			}
+			if (payoffs[10].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n0: $2.00\n5: $1.00\n6: $10\n7: $50\n8: $250\n9: $1,500\n10: 15,000\n11: 500,000");
+			}
+			if (payoffs[11].getModel().isPressed()) {
+				JOptionPane.showMessageDialog(null, "Match\n0: $4.00\n6: $5\n7: $25\n8: $150\n9: $1,000\n10: 2,500\n11: 25,000\n12: $1,000,000");
 			}
 
 		}
