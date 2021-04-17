@@ -194,6 +194,11 @@ public class Keno extends JFrame {
 		exit.setMnemonic('E');
 		info.setMnemonic('K');
 		payScale.setMnemonic('P');
+		
+		// add action listeners
+		info.addActionListener(new ButtonListener());
+		exit.addActionListener(new ButtonListener());
+		betMaxButton.addActionListener(new ButtonListener());
 	}
 
 	private void addPanels() {
