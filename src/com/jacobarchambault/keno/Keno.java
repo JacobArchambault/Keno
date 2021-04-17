@@ -7,6 +7,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -29,6 +31,16 @@ import javax.swing.border.Border;
 // 15 Mar 2021
 // The purpose of this program is to create a workable Keno game
 public class Keno extends JFrame {
+	class RadioListener implements ItemListener {
+
+		@Override
+		public void itemStateChanged(ItemEvent arg0) {
+			// TODO Auto-generated method stub
+
+		}
+
+	}
+
 	class Listener implements ActionListener {
 
 		@Override
@@ -71,13 +83,16 @@ public class Keno extends JFrame {
 				JOptionPane.showMessageDialog(null, "Match\n4: $1.00\n5: $5\n6: $25\n7: $200\n8: $4,000\n9: $40,000");
 			}
 			if (payoffs[9].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n0: $2.00\n5: $2.00\n6: $20\n7: $80\n8: $500\n9: $10,000\n10: 100,000");
+				JOptionPane.showMessageDialog(null,
+						"Match\n0: $2.00\n5: $2.00\n6: $20\n7: $80\n8: $500\n9: $10,000\n10: 100,000");
 			}
 			if (payoffs[10].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n0: $2.00\n5: $1.00\n6: $10\n7: $50\n8: $250\n9: $1,500\n10: 15,000\n11: 500,000");
+				JOptionPane.showMessageDialog(null,
+						"Match\n0: $2.00\n5: $1.00\n6: $10\n7: $50\n8: $250\n9: $1,500\n10: 15,000\n11: 500,000");
 			}
 			if (payoffs[11].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n0: $4.00\n6: $5\n7: $25\n8: $150\n9: $1,000\n10: 2,500\n11: 25,000\n12: $1,000,000");
+				JOptionPane.showMessageDialog(null,
+						"Match\n0: $4.00\n6: $5\n7: $25\n8: $150\n9: $1,000\n10: 2,500\n11: 25,000\n12: $1,000,000");
 			}
 
 		}
