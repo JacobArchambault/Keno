@@ -178,6 +178,22 @@ public class Keno extends JFrame {
 			payScale.add(payoffs[i]);
 			payoffs[i].setFont(font2);
 		}
+		for (int i = 0; i < payoffs.length; i++) {
+			payoffs[i].setHorizontalAlignment(SwingConstants.RIGHT);
+		}
+		// set fonts
+		file.setFont(font2);
+		payScale.setFont(font2);
+		help.setFont(font2);
+		exit.setFont(font2);
+		info.setFont(font2);
+		
+		// set Mnemonics
+		file.setMnemonic('F');
+		help.setMnemonic('H');
+		exit.setMnemonic('E');
+		info.setMnemonic('K');
+		payScale.setMnemonic('P');
 	}
 
 	private void addPanels() {
