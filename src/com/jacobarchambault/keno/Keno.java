@@ -34,8 +34,21 @@ public class Keno extends JFrame {
 	class RadioListener implements ItemListener {
 
 		@Override
-		public void itemStateChanged(ItemEvent arg0) {
-			// TODO Auto-generated method stub
+		public void itemStateChanged(ItemEvent e) {
+			for (int i = 0; i < spots.length; i++) {
+				if (e.getSource() == spots[i]) {
+					numbersBet = Integer.parseInt(spots[i].getText());
+					break;
+				}
+
+			}
+			for (int i = 0; i < dollars.length; i++) {
+				if (e.getSource() == dollars[i]) {
+					if (dollars[i].isSelected()) {
+						amountBet = Integer.parseInt(dollars[i].getText());
+					}
+				}
+			}
 
 		}
 
