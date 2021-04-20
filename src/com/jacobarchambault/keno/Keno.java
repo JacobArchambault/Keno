@@ -31,93 +31,27 @@ import javax.swing.border.Border;
 // 15 Mar 2021
 // The purpose of this program is to create a workable Keno game
 public class Keno extends JFrame {
-	class RadioListener implements ItemListener {
+	class BottomPanel extends JPanel {
+		/**
+		 *
+		 */
+		private static final long serialVersionUID = 1L;
 
-		@Override
-		public void itemStateChanged(ItemEvent e) {
-			for (int i = 0; i < spots.length; i++) {
-				if (e.getSource() == spots[i]) {
-					numbersBet = Integer.parseInt(spots[i].getText());
-					break;
-				}
-
+		BottomPanel() {
+			setLayout(new GridLayout(4, 10));
+			for (var i = 40; i < 80; i++) {
+				this.add(buttons[i]);
 			}
-			for (int i = 0; i < dollars.length; i++) {
-				if (e.getSource() == dollars[i]) {
-					if (dollars[i].isSelected()) {
-						amountBet = Integer.parseInt(dollars[i].getText());
-					}
-				}
-			}
-
-		}
-
-	}
-
-	class Listener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			if (betMaxButton.getModel().isPressed()) {
-				dollars[5].setSelected(true);
-			}
-			if (info.getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null,
-						"Click the numbers you wish to bet (1-12).\\nClick Generate Numbers\\n20 Random numbers will be chosen and highlighted in Red.\\nA message will display as to whether you have won.\\nSee Help > Payoffs for a list of payoffs");
-			}
-			if (exit.getModel().isPressed()) {
-				System.exit(0);
-			}
-			if (payoffs[0].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n1: $2.50");
-			}
-			if (payoffs[1].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n1: $1.00\n2: $5");
-			}
-			if (payoffs[2].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n2: $2.50\n3: $25");
-			}
-			if (payoffs[3].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n2: $1.00\n3: $4\n5: $100");
-			}
-			if (payoffs[4].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n3: $2.00\n4: $20\n5: $450");
-			}
-			if (payoffs[5].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n3: $1.00\n4: $7\n5: $50\n6: $1,600");
-			}
-			if (payoffs[6].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n3: $1.00\n4: $3\n5: $20\n6: $100\n7: $5,000");
-			}
-			if (payoffs[7].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n4: $2.00\n5: $10\n6: $50\n7: $1,000\n8: $15,000");
-			}
-			if (payoffs[8].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null, "Match\n4: $1.00\n5: $5\n6: $25\n7: $200\n8: $4,000\n9: $40,000");
-			}
-			if (payoffs[9].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null,
-						"Match\n0: $2.00\n5: $2.00\n6: $20\n7: $80\n8: $500\n9: $10,000\n10: 100,000");
-			}
-			if (payoffs[10].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null,
-						"Match\n0: $2.00\n5: $1.00\n6: $10\n7: $50\n8: $250\n9: $1,500\n10: 15,000\n11: 500,000");
-			}
-			if (payoffs[11].getModel().isPressed()) {
-				JOptionPane.showMessageDialog(null,
-						"Match\n0: $4.00\n6: $5\n7: $25\n8: $150\n9: $1,000\n10: 2,500\n11: 25,000\n12: $1,000,000");
-			}
-
 		}
 	}
 
 	class ButtonListener implements ActionListener {
 
 		@Override
-		public void actionPerformed(ActionEvent e) {
-			for (int i = 0; i < spots.length; i++) {
-				if (spots[i].isSelected()) {
-					numbersBet = Integer.parseInt(spots[i].getText());
+		public void actionPerformed(final ActionEvent e) {
+			for (final JRadioButton spot : spots) {
+				if (spot.isSelected()) {
+					numbersBet = Integer.parseInt(spot.getText());
 				}
 
 			}
@@ -125,7 +59,7 @@ public class Keno extends JFrame {
 				count++;
 				if (e.getSource() instanceof JButton) {
 					((JButton) e.getSource()).setIcon(icon);
-					String numberLabel = ((JButton) e.getSource()).getText();
+					final var numberLabel = ((JButton) e.getSource()).getText();
 					picks.add(numberLabel);
 					((JButton) e.getSource()).setText("");
 				}
@@ -141,17 +75,60 @@ public class Keno extends JFrame {
 
 	}
 
-	class BottomPanel extends JPanel {
-		/**
-		 *
-		 */
-		private static final long serialVersionUID = 1L;
+	class Listener implements ActionListener {
 
-		BottomPanel() {
-			setLayout(new GridLayout(4, 10));
-			for (var i = 40; i < 80; i++) {
-				this.add(buttons[i]);
+		@Override
+		public void actionPerformed(final ActionEvent e) {
+			if (e.getSource() == betMaxButton) {
+				dollars[5].setSelected(true);
 			}
+			if (e.getSource() == info) {
+				JOptionPane.showMessageDialog(null,
+						"Click the numbers you wish to bet (1-12).\nClick Generate Numbers\n20 Random numbers will be chosen and highlighted in Red.\nA message will display as to whether you have won.\nSee Help > Payoffs for a list of payoffs");
+			}
+			if (e.getSource() == exit) {
+				System.exit(0);
+			}
+			if (e.getSource() == payoffs[0]) {
+				JOptionPane.showMessageDialog(null, "Match\n1: $2.50");
+			}
+			if (e.getSource() == payoffs[1]) {
+				JOptionPane.showMessageDialog(null, "Match\n1: $1.00\n2: $5");
+			}
+			if (e.getSource() == payoffs[2]) {
+				JOptionPane.showMessageDialog(null, "Match\n2: $2.50\n3: $25");
+			}
+			if (e.getSource() == payoffs[3]) {
+				JOptionPane.showMessageDialog(null, "Match\n2: $1.00\n3: $4\n5: $100");
+			}
+			if (e.getSource() == payoffs[4]) {
+				JOptionPane.showMessageDialog(null, "Match\n3: $2.00\n4: $20\n5: $450");
+			}
+			if (e.getSource() == payoffs[5]) {
+				JOptionPane.showMessageDialog(null, "Match\n3: $1.00\n4: $7\n5: $50\n6: $1,600");
+			}
+			if (e.getSource() == payoffs[6]) {
+				JOptionPane.showMessageDialog(null, "Match\n3: $1.00\n4: $3\n5: $20\n6: $100\n7: $5,000");
+			}
+			if (e.getSource() == payoffs[7]) {
+				JOptionPane.showMessageDialog(null, "Match\n4: $2.00\n5: $10\n6: $50\n7: $1,000\n8: $15,000");
+			}
+			if (e.getSource() == payoffs[8]) {
+				JOptionPane.showMessageDialog(null, "Match\n4: $1.00\n5: $5\n6: $25\n7: $200\n8: $4,000\n9: $40,000");
+			}
+			if (e.getSource() == payoffs[9]) {
+				JOptionPane.showMessageDialog(null,
+						"Match\n0: $2.00\n5: $2.00\n6: $20\n7: $80\n8: $500\n9: $10,000\n10: 100,000");
+			}
+			if (e.getSource() == payoffs[10]) {
+				JOptionPane.showMessageDialog(null,
+						"Match\n0: $2.00\n5: $1.00\n6: $10\n7: $50\n8: $250\n9: $1,500\n10: 15,000\n11: 500,000");
+			}
+			if (e.getSource() == payoffs[11]) {
+				JOptionPane.showMessageDialog(null,
+						"Match\n0: $4.00\n6: $5\n7: $25\n8: $150\n9: $1,000\n10: 2,500\n11: 25,000\n12: $1,000,000");
+			}
+
 		}
 	}
 
@@ -192,6 +169,28 @@ public class Keno extends JFrame {
 		}
 	}
 
+	class RadioListener implements ItemListener {
+
+		@Override
+		public void itemStateChanged(final ItemEvent e) {
+			for (final JRadioButton spot : spots) {
+				if (e.getSource() == spot) {
+					numbersBet = Integer.parseInt(spot.getText());
+					break;
+				}
+
+			}
+			for (final JRadioButton dollar : dollars) {
+				if ((e.getSource() == dollar) && dollar.isSelected()) {
+					Integer.parseInt(dollar.getText());
+					break;
+				}
+			}
+
+		}
+
+	}
+
 	class TopPanel extends JPanel {
 		/**
 		 *
@@ -220,30 +219,26 @@ public class Keno extends JFrame {
 
 	// 2
 	private int count = 0;
-	private int correct = 0;
-	private int amountBet = 0;
 	private int numbersBet = 0;
-	private double amountWon = 0;
-	private int counter = 0;
-	private int i = 0;
+	private final int i = 0;
 	// 3
-	private JButton betMaxButton = new JButton("Bet max amount");
-	private JButton eraseButton = new JButton("Clear board");
-	private JButton startButton = new JButton("Generate numbers");
+	private final JButton betMaxButton = new JButton("Bet max amount");
+	private final JButton eraseButton = new JButton("Clear board");
+	private final JButton startButton = new JButton("Generate numbers");
 	// 4
-	private ImageIcon icon = new ImageIcon("images/checkmark.gif");
+	private final ImageIcon icon = new ImageIcon("images/checkmark.gif");
 
 	// 5
-	private ArrayList<String> picks = new ArrayList<>();
+	private final ArrayList<String> picks = new ArrayList<>();
 
 	// 6
-	private JMenuBar menuBar = new JMenuBar();
-	private JMenu file = new JMenu("File");
-	private JMenu help = new JMenu("Help");
-	private JMenu payScale = new JMenu("Payoffs");
-	private JMenuItem exit = new JMenuItem("Exit Program");
-	private JMenuItem info = new JMenuItem("How to play Keno");
-	private JMenuItem[] payoffs = new JMenuItem[12];
+	private final JMenuBar menuBar = new JMenuBar();
+	private final JMenu file = new JMenu("File");
+	private final JMenu help = new JMenu("Help");
+	private final JMenu payScale = new JMenu("Payoffs");
+	private final JMenuItem exit = new JMenuItem("Exit Program");
+	private final JMenuItem info = new JMenuItem("How to play Keno");
+	private final JMenuItem[] payoffs = new JMenuItem[12];
 
 	private final Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
 	private final Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
@@ -272,6 +267,25 @@ public class Keno extends JFrame {
 		addPanels();
 	}
 
+	private void addPanels() {
+		this.add(buttonPanel1);
+		this.add(middlePanel);
+		this.add(buttonPanel2);
+	}
+
+	private void createButtons() {
+		for (var i = 0; i < buttons.length; i++) {
+			buttons[i] = new JButton(String.valueOf(i + 1));
+			buttons[i].setHorizontalAlignment(SwingConstants.CENTER);
+			buttons[i].setFont(font);
+			getBackground();
+			buttons[i].setBackground(Color.blue);
+			getForeground();
+			buttons[i].setForeground(Color.yellow);
+			buttons[i].addActionListener(new ButtonListener());
+		}
+	}
+
 	private void createMenu() {
 		setJMenuBar(menuBar);
 		menuBar.add(file);
@@ -288,13 +302,13 @@ public class Keno extends JFrame {
 		menuBar.add(Box.createHorizontalGlue());
 		file.add(exit);
 		help.add(info);
-		for (int i = 0; i < payoffs.length; i++) {
+		for (var i = 0; i < payoffs.length; i++) {
 			payoffs[i] = new JMenuItem(String.valueOf(i + 1) + "   Spots Selected");
 			payScale.add(payoffs[i]);
 			payoffs[i].setFont(font2);
 		}
-		for (int i = 0; i < payoffs.length; i++) {
-			payoffs[i].setHorizontalAlignment(SwingConstants.RIGHT);
+		for (final JMenuItem payoff : payoffs) {
+			payoff.setHorizontalAlignment(SwingConstants.RIGHT);
 		}
 		// set fonts
 		file.setFont(font2);
@@ -319,40 +333,8 @@ public class Keno extends JFrame {
 		betMaxButton.setFont(font2);
 		eraseButton.setFont(font2);
 		startButton.setFont(font2);
-		for (int i = 0; i < payoffs.length; i++) {
-			payoffs[i].addActionListener(new Listener());
-			;
-		}
-	}
-
-	private void clear() {
-	}
-
-	private void generateNumbers() {
-	}
-
-	private void displayWinnings() {
-	}
-
-	private void populateArrayList() {
-	}
-
-	private void addPanels() {
-		this.add(buttonPanel1);
-		this.add(middlePanel);
-		this.add(buttonPanel2);
-	}
-
-	private void createButtons() {
-		for (var i = 0; i < buttons.length; i++) {
-			buttons[i] = new JButton(String.valueOf(i + 1));
-			buttons[i].setHorizontalAlignment(SwingConstants.CENTER);
-			buttons[i].setFont(font);
-			getBackground();
-			buttons[i].setBackground(Color.blue);
-			getForeground();
-			buttons[i].setForeground(Color.yellow);
-			buttons[i].addActionListener(new ButtonListener());
+		for (final JMenuItem payoff : payoffs) {
+			payoff.addActionListener(new Listener());
 		}
 	}
 
