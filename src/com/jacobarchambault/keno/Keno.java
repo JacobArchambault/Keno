@@ -9,6 +9,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -221,6 +222,7 @@ public class Keno extends JFrame {
 	private int count = 0;
 	private int numbersBet = 0;
 	private final int i = 0;
+	private final NumberFormat currency = NumberFormat.getCurrencyInstance();
 	// 3
 	private final JButton betMaxButton = new JButton("Bet max amount");
 	private final JButton eraseButton = new JButton("Clear board");
