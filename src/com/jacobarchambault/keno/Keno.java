@@ -222,7 +222,7 @@ public class Keno extends JFrame {
 	// 2
 	private int count = 0;
 	private int numbersBet = 0;
-	private final int i = 0;
+	private int i = 0;
 	private final NumberFormat currency = NumberFormat.getCurrencyInstance();
 	// 3
 	private final JButton betMaxButton = new JButton("Bet max amount");
@@ -235,6 +235,7 @@ public class Keno extends JFrame {
 	private final ArrayList<String> picks = new ArrayList<>();
 	private final ArrayList<Integer> shuffleNumbers = new ArrayList<>();
 	private final ArrayList<Integer> winningNumbers = new ArrayList<>();
+	private double amountWon = 0;
 
 	// 6
 	private final JMenuBar menuBar = new JMenuBar();
@@ -271,7 +272,13 @@ public class Keno extends JFrame {
 		createButtons();
 		createRadioButtons();
 		createPanels();
+		populateArrayList();
 		addPanels();
+	}
+
+	private void populateArrayList() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	private void addPanels() {
@@ -343,6 +350,9 @@ public class Keno extends JFrame {
 		for (final JMenuItem payoff : payoffs) {
 			payoff.addActionListener(new Listener());
 		}
+		eraseButton.addActionListener(new Listener());
+		startButton.addActionListener(new Listener());
+		
 	}
 
 	private void createPanels() {
@@ -369,5 +379,12 @@ public class Keno extends JFrame {
 			spots[i].setFont(font2);
 			spots[i].addItemListener(new RadioListener());
 		}
+	}
+	private void clear() {
+		winningNumbers.clear();
+		winningNumbers.trimToSize();
+		count = 0;
+		amountWon = 0;
+		i = 0;
 	}
 }
