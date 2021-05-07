@@ -26,6 +26,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.SwingConstants;
+import javax.swing.Timer;
 import javax.swing.border.Border;
 
 // Jacob Archambault
@@ -232,6 +233,8 @@ public class Keno extends JFrame {
 
 	// 5
 	private final ArrayList<String> picks = new ArrayList<>();
+	private final ArrayList<Integer> shuffleNumbers = new ArrayList<>();
+	private final ArrayList<Integer> winningNumbers = new ArrayList<>();
 
 	// 6
 	private final JMenuBar menuBar = new JMenuBar();
@@ -241,6 +244,8 @@ public class Keno extends JFrame {
 	private final JMenuItem exit = new JMenuItem("Exit Program");
 	private final JMenuItem info = new JMenuItem("How to play Keno");
 	private final JMenuItem[] payoffs = new JMenuItem[12];
+	private Color color;
+	private Timer timer;
 
 	private final Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
 	private final Border spotsBorder = BorderFactory.createTitledBorder("Choose numbers to play");
