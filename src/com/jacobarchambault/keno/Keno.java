@@ -236,6 +236,7 @@ public class Keno extends JFrame {
 	private final ArrayList<Integer> shuffleNumbers = new ArrayList<>();
 	private final ArrayList<Integer> winningNumbers = new ArrayList<>();
 	private double amountWon = 0;
+	private double correct = 0;
 
 	// 6
 	private final JMenuBar menuBar = new JMenuBar();
@@ -265,6 +266,7 @@ public class Keno extends JFrame {
 	private final Font font2 = new Font("Arial", Font.BOLD, 18);
 
 	private final JLabel luckyLabel = new JLabel(new ImageIcon("images/Lucky.png"));
+	private int amountBet;
 
 	public Keno() {
 		setLayout(new GridLayout(3, 1));
@@ -384,7 +386,18 @@ public class Keno extends JFrame {
 		winningNumbers.clear();
 		winningNumbers.trimToSize();
 		count = 0;
+		correct = 0;
 		amountWon = 0;
 		i = 0;
+		for (var i = 0; i < buttons.length; i++) {
+			buttons[i].setText(String.valueOf(i+1));
+			buttons[i].setBackground(Color.blue);
+			buttons[i].setForeground(Color.yellow);
+			buttons[i].setIcon(null);  
+		}
+		dollarGroup.clearSelection();
+		spotsGroup.clearSelection();
+		numbersBet = 0;
+		amountBet = 0;
 	}
 }
