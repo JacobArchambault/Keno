@@ -410,6 +410,10 @@ public class Keno extends JFrame {
 			clear();			
 		} else if (count != numbersBet) {
 			JOptionPane.showMessageDialog(null, "You must select " + numbersBet + " numbers");
+		} else {
+			for (var i = 0; i < 20; i++) {
+				winningNumbers.add(shuffleNumbers.get(i));
+			}
 		}
 		
 	}
