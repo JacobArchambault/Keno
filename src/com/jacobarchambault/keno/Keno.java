@@ -88,6 +88,9 @@ public class Keno extends JFrame {
 			if (e.getSource() == betMaxButton) {
 				dollars[5].setSelected(true);
 			}
+			if (e.getSource() == eraseButton) {
+				clear();
+			}
 			if (e.getSource() == info) {
 				JOptionPane.showMessageDialog(null,
 						"Click the numbers you wish to bet (1-12).\nClick Generate Numbers\n20 Random numbers will be chosen and highlighted in Red.\nA message will display as to whether you have won.\nSee Help > Payoffs for a list of payoffs");
@@ -134,7 +137,6 @@ public class Keno extends JFrame {
 				JOptionPane.showMessageDialog(null,
 						"Match\n0: $4.00\n6: $5\n7: $25\n8: $150\n9: $1,000\n10: 2,500\n11: 25,000\n12: $1,000,000");
 			}
-
 		}
 	}
 
