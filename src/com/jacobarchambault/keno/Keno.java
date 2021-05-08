@@ -788,6 +788,8 @@ public class Keno extends JFrame {
 				for (final String pick : picks) {
 					output2.format(" ", pick);
 				}
+				output.close();
+				output2.close();
 			} catch (final IOException ex) {
 				JOptionPane.showMessageDialog(null, "Error creating file");
 
