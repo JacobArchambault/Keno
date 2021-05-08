@@ -11,6 +11,7 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -400,4 +401,17 @@ public class Keno extends JFrame {
 		numbersBet = 0;
 		amountBet = 0;
 	}
+	private void generateNumbers() {
+		winningNumbers.clear();
+		winningNumbers.trimToSize();
+		Collections.shuffle(shuffleNumbers);
+		if (numbersBet <= 0) {
+			JOptionPane.showMessageDialog(null, "Choose numbers to play");
+			clear();			
+		} else if (count != numbersBet) {
+			JOptionPane.showMessageDialog(null, "You must select " + numbersBet + " numbers");
+		}
+		
+	}
+	
 }
