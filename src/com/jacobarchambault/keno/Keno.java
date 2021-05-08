@@ -137,6 +137,9 @@ public class Keno extends JFrame {
 				JOptionPane.showMessageDialog(null,
 						"Match\n0: $4.00\n6: $5\n7: $25\n8: $150\n9: $1,000\n10: 2,500\n11: 25,000\n12: $1,000,000");
 			}
+			if (e.getSource() == startButton) {
+				generateNumbers();
+			}
 		}
 	}
 
