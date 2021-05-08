@@ -192,7 +192,7 @@ public class Keno extends JFrame {
 
 			}
 			for (final JRadioButton dollar : dollars) {
-				if ((e.getSource() == dollar) && dollar.isSelected()) {
+				if (e.getSource() == dollar && dollar.isSelected()) {
 					Integer.parseInt(dollar.getText());
 					break;
 				}
@@ -255,7 +255,6 @@ public class Keno extends JFrame {
 	private final JMenuItem exit = new JMenuItem("Exit Program");
 	private final JMenuItem info = new JMenuItem("How to play Keno");
 	private final JMenuItem[] payoffs = new JMenuItem[12];
-	private Color color;
 	private Timer timer;
 
 	private final Border radioBorder = BorderFactory.createTitledBorder("Choose bet amount ($)");
@@ -287,17 +286,29 @@ public class Keno extends JFrame {
 		addPanels();
 	}
 
-	private void populateArrayList() {
-		for (var i = 0; i <= 79; i++ ) {
-			shuffleNumbers.add(i);
-		}
-
-	}
-
 	private void addPanels() {
 		this.add(buttonPanel1);
 		this.add(middlePanel);
 		this.add(buttonPanel2);
+	}
+
+	private void clear() {
+		winningNumbers.clear();
+		winningNumbers.trimToSize();
+		count = 0;
+		correct = 0;
+		amountWon = 0;
+		i = 0;
+		for (var i = 0; i < buttons.length; i++) {
+			buttons[i].setText(String.valueOf(i + 1));
+			buttons[i].setBackground(Color.blue);
+			buttons[i].setForeground(Color.yellow);
+			buttons[i].setIcon(null);
+		}
+		dollarGroup.clearSelection();
+		spotsGroup.clearSelection();
+		numbersBet = 0;
+		amountBet = 0;
 	}
 
 	private void createButtons() {
@@ -392,79 +403,6 @@ public class Keno extends JFrame {
 			spots[i].setFont(font2);
 			spots[i].addItemListener(new RadioListener());
 		}
-	}
-
-	private void clear() {
-		winningNumbers.clear();
-		winningNumbers.trimToSize();
-		count = 0;
-		correct = 0;
-		amountWon = 0;
-		i = 0;
-		for (var i = 0; i < buttons.length; i++) {
-			buttons[i].setText(String.valueOf(i + 1));
-			buttons[i].setBackground(Color.blue);
-			buttons[i].setForeground(Color.yellow);
-			buttons[i].setIcon(null);
-		}
-		dollarGroup.clearSelection();
-		spotsGroup.clearSelection();
-		numbersBet = 0;
-		amountBet = 0;
-	}
-
-	private void generateNumbers() {
-		winningNumbers.clear();
-		winningNumbers.trimToSize();
-		Collections.shuffle(shuffleNumbers);
-		if (numbersBet <= 0) {
-			JOptionPane.showMessageDialog(null, "Choose numbers to play");
-			clear();
-		} else if (count != numbersBet) {
-			JOptionPane.showMessageDialog(null, "You must select " + numbersBet + " numbers");
-		} else {
-			for (var i = 0; i < 20; i++) {
-				winningNumbers.add(shuffleNumbers.get(i));
-			}
-			timer = new Timer(3000, new ActionListener() {
-				@Override
-				public void actionPerformed(ActionEvent e) {
-					if (i < buttons.length) {
-						if (buttons[winningNumbers.get(i)].getIcon() != null) {
-							correct++;
-							buttons[winningNumbers.get(i)].setBackground(Color.GREEN);
-						} else {
-							buttons[winningNumbers.get(i)].setBackground(Color.RED);
-						}
-					}
-					if (i < 19) {
-						i++;
-					} else {
-						((Timer) e.getSource()).stop();
-						JOptionPane.showMessageDialog(null,
-								"The numbers you have selected and the numbers generated, have been successfully downloaded");
-						displayWinnings();
-					}
-				}
-			});
-			if (!timer.isRunning()) {
-				timer.start();
-			}
-			try {
-				Formatter output = new Formatter(new FileOutputStream("Final.txt", true));
-				Formatter output2 = new Formatter(new FileOutputStream("UserPicks.txt", true));
-				for (var i = 0; i < 20; i++) {
-					output.format("%d ", (winningNumbers.get(i) + 1));
-				}
-				for (var i = 0; i < picks.size(); i++) {
-					output2.format(" ", (picks.get(i)));
-				}
-			} catch (IOException ex) {
-				JOptionPane.showMessageDialog(null, "Error creating file");
-
-			}
-		}
-
 	}
 
 	protected void displayWinnings() {
@@ -801,9 +739,68 @@ public class Keno extends JFrame {
 			break;
 		}
 
-		if (amountWon > 0)
+		if (amountWon > 0) {
 			JOptionPane.showMessageDialog(null,
 					"Congratulations you matched " + correct + " number(s) and won " + currency.format(amountWon));
+		}
+	}
+
+	private void generateNumbers() {
+		winningNumbers.clear();
+		winningNumbers.trimToSize();
+		Collections.shuffle(shuffleNumbers);
+		if (numbersBet <= 0) {
+			JOptionPane.showMessageDialog(null, "Choose numbers to play");
+			clear();
+		} else if (count != numbersBet) {
+			JOptionPane.showMessageDialog(null, "You must select " + numbersBet + " numbers");
+		} else {
+			for (var i = 0; i < 20; i++) {
+				winningNumbers.add(shuffleNumbers.get(i));
+			}
+			timer = new Timer(3000, e -> {
+				if (i < buttons.length) {
+					if (buttons[winningNumbers.get(i)].getIcon() != null) {
+						correct++;
+						buttons[winningNumbers.get(i)].setBackground(Color.GREEN);
+					} else {
+						buttons[winningNumbers.get(i)].setBackground(Color.RED);
+					}
+				}
+				if (i < 19) {
+					i++;
+				} else {
+					((Timer) e.getSource()).stop();
+					JOptionPane.showMessageDialog(null,
+							"The numbers you have selected and the numbers generated, have been successfully downloaded");
+					displayWinnings();
+				}
+			});
+			if (!timer.isRunning()) {
+				timer.start();
+			}
+			try {
+				final var output = new Formatter(new FileOutputStream("Final.txt", true));
+				final var output2 = new Formatter(new FileOutputStream("UserPicks.txt", true));
+				for (var i = 0; i < 20; i++) {
+					output.format("%d ", winningNumbers.get(i) + 1);
+				}
+				for (final String pick : picks) {
+					output2.format(" ", pick);
+				}
+			} catch (final IOException ex) {
+				JOptionPane.showMessageDialog(null, "Error creating file");
+
+			}
+		}
+
+	}
+
+	private void populateArrayList() {
+		for (var i = 0; i <= 79; i++) {
+			shuffleNumbers.add(i);
+		}
+
 	}
 
 }
