@@ -283,7 +283,9 @@ public class Keno extends JFrame {
 	}
 
 	private void populateArrayList() {
-		
+		for (var i = 0; i <= 79; i++ ) {
+			shuffleNumbers.add(i);
+		}
 
 	}
 
