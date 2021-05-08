@@ -240,7 +240,7 @@ public class Keno extends JFrame {
 	private final ArrayList<Integer> shuffleNumbers = new ArrayList<>();
 	private final ArrayList<Integer> winningNumbers = new ArrayList<>();
 	private double amountWon = 0;
-	private double correct = 0;
+	private int correct = 0;
 
 	// 6
 	private final JMenuBar menuBar = new JMenuBar();
@@ -283,7 +283,7 @@ public class Keno extends JFrame {
 	}
 
 	private void populateArrayList() {
-		// TODO Auto-generated method stub
+		
 
 	}
 
@@ -461,8 +461,342 @@ public class Keno extends JFrame {
 	}
 
 	protected void displayWinnings() {
-		// TODO Auto-generated method stub
+		switch (numbersBet) {
+		case 1:
+			switch (correct) {
+			case 1:
+				amountWon = 2.50 * amountBet;
+				break;
+			case 0:
+				JOptionPane.showMessageDialog(null,
+						"You matched" + correct + " numbers.  Sorry but you must match the number to win.");
+				break;
+			default:
+				JOptionPane.showMessageDialog(null,
+						"You matched " + correct + " numbers.  Sorry but you must match the number to win.");
+				break;
+			}
+			break;
+		case 2:
+			switch (correct) {
+			case 1:
+				amountWon = 1 * amountBet;
+				break;
+			case 2:
+				amountWon = 5 * amountBet;
+				break;
+			default:
+				JOptionPane.showMessageDialog(null,
+						"You matched " + correct + " numbers.  Sorry but you must match the number to win.");
+				break;
+			}
+			break;
+		case 3:
+			switch (correct) {
+			case 2:
+				amountWon = 2.50 * amountBet;
+				break;
 
+			case 3:
+				amountWon = 25 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null,
+						"You matched " + correct + " numbers.  Sorry but you must match at least 2 numbers to win.");
+				break;
+			}
+
+			break;
+
+		case 4:
+			switch (correct) {
+			case 2:
+				amountWon = 1 * amountBet;
+				break;
+
+			case 3:
+				amountWon = 4 * amountBet;
+				break;
+
+			case 4:
+				amountWon = 100 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null,
+						"You matched " + correct + " numbers.  Sorry but you must match at least two numbers to win.");
+				break;
+			}
+
+			break;
+
+		case 5:
+			switch (correct) {
+			case 3:
+				amountWon = 2 * amountBet;
+				break;
+
+			case 4:
+				amountWon = 20 * amountBet;
+				break;
+
+			case 5:
+				amountWon = 450 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null, "You matched " + correct
+						+ " numbers.  Sorry but you must match at least three numbers to win.");
+				break;
+			}
+
+			break;
+
+		case 6:
+			switch (correct) {
+			case 3:
+				amountWon = 1 * amountBet;
+				break;
+
+			case 4:
+				amountWon = 7 * amountBet;
+				break;
+
+			case 5:
+				amountWon = 50 * amountBet;
+				break;
+
+			case 6:
+				amountWon = 1600 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null, "You matched " + correct
+						+ " numbers.  Sorry but you must match at least three numbers to win.");
+			}
+
+			break;
+
+		case 7:
+			switch (correct) {
+			case 3:
+				amountWon = 1 * amountBet;
+				break;
+
+			case 4:
+				amountWon = 3 * amountBet;
+				break;
+
+			case 5:
+				amountWon = 20 * amountBet;
+				break;
+
+			case 6:
+				amountWon = 100 * amountBet;
+				break;
+
+			case 7:
+				amountWon = 5000 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null, "You matched " + correct
+						+ " numbers.  Sorry but you must match at least three numbers to win.");
+				break;
+			}
+
+			break;
+
+		case 8:
+			switch (correct) {
+			case 4:
+				amountWon = 2 * amountBet;
+				break;
+
+			case 5:
+				amountWon = 10 * amountBet;
+				break;
+
+			case 6:
+				amountWon = 50 * amountBet;
+				break;
+
+			case 7:
+				amountWon = 1000 * amountBet;
+				break;
+
+			case 8:
+				amountWon = 15000 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null,
+						"You matched " + correct + " numbers.  Sorry but you must match at least 4 numbers to win.");
+				break;
+			}
+			break;
+
+		case 9:
+			switch (correct) {
+			case 4:
+				amountWon = 1 * amountBet;
+				break;
+
+			case 5:
+				amountWon = 5 * amountBet;
+				break;
+
+			case 6:
+				amountWon = 25 * amountBet;
+				break;
+
+			case 7:
+				amountWon = 200 * amountBet;
+				break;
+
+			case 8:
+				amountWon = 4000 * amountBet;
+				break;
+
+			case 9:
+				amountWon = 40000 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null,
+						"You matched " + correct + " numbers.  Sorry but you must match at least 4 numbers to win.");
+				break;
+			}
+
+			break;
+
+		case 10:
+			switch (correct) {
+			case 0:
+				amountWon = 2 * amountBet;
+				break;
+
+			case 5:
+				amountWon = 2 * amountBet;
+				break;
+
+			case 6:
+				amountWon = 20 * amountBet;
+				break;
+
+			case 7:
+				amountWon = 80 * amountBet;
+				break;
+
+			case 8:
+				amountWon = 500 * amountBet;
+				break;
+
+			case 9:
+				amountWon = 10000 * amountBet;
+				break;
+
+			case 10:
+				amountWon = 100000 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null, "You matched " + correct
+						+ " numbers.  Sorry but you match either zero numbers, or five to ten numbers to win.");
+				break;
+			}
+
+			break;
+
+		case 11:
+			switch (correct) {
+			case 0:
+				amountWon = 2 * amountBet;
+				break;
+
+			case 5:
+				amountWon = 1 * amountBet;
+				break;
+
+			case 6:
+				amountWon = 10 * amountBet;
+				break;
+
+			case 7:
+				amountWon = 50 * amountBet;
+				break;
+
+			case 8:
+				amountWon = 250 * amountBet;
+				break;
+
+			case 9:
+				amountWon = 1500 * amountBet;
+				break;
+
+			case 10:
+				amountWon = 15000 * amountBet;
+				break;
+
+			case 11:
+				amountWon = 500000 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null, "You matched " + correct
+						+ " numbers.  Sorry but you match either zero numbers, or five to eleven numbers to win.");
+				break;
+			}
+
+			break;
+
+		case 12:
+			switch (correct) {
+			case 0:
+				amountWon = 4 * amountBet;
+				break;
+
+			case 6:
+				amountWon = 5 * amountBet;
+				break;
+
+			case 7:
+				amountWon = 25 * amountBet;
+				break;
+
+			case 8:
+				amountWon = 150 * amountBet;
+				break;
+
+			case 9:
+				amountWon = 1000 * amountBet;
+				break;
+
+			case 10:
+				amountWon = 2500 * amountBet;
+				break;
+
+			case 11:
+				amountWon = 25000 * amountBet;
+				break;
+
+			case 12:
+				amountWon = 1000000 * amountBet;
+				break;
+
+			default:
+				JOptionPane.showMessageDialog(null, "You matched " + correct
+						+ " numbers.  Sorry but you match either zero numbers, or six to twelve numbers to win.");
+				break;
+			}
+
+			break;
+		}
+
+		if (amountWon > 0)
+			JOptionPane.showMessageDialog(null,
+					"Congratulations you matched " + correct + " number(s) and won " + currency.format(amountWon));
 	}
 
 }
