@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -444,10 +445,17 @@ public class Keno extends JFrame {
 			}
 			try {
 				Formatter output = new Formatter(new FileOutputStream("Final.txt", true));
-			} catch (Exception ex) {
+				Formatter output2 = new Formatter(new FileOutputStream("UserPicks.txt", true));
+				for (var i = 0; i < 20; i++) {
+					output.format("%d ", (winningNumbers.get(i) + 1));
+				}
+				for (var i = 0; i < picks.size(); i++) {
+					output2.format(" ", (picks.get(i)));
+				}
+			} catch (IOException ex) {
+				JOptionPane.showMessageDialog(null, "Error creating file");
 
 			}
-
 		}
 
 	}
