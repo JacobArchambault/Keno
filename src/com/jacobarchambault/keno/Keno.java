@@ -281,7 +281,7 @@ public class Keno extends JFrame {
 
 	private void populateArrayList() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private void addPanels() {
@@ -355,7 +355,7 @@ public class Keno extends JFrame {
 		}
 		eraseButton.addActionListener(new Listener());
 		startButton.addActionListener(new Listener());
-		
+
 	}
 
 	private void createPanels() {
@@ -383,6 +383,7 @@ public class Keno extends JFrame {
 			spots[i].addItemListener(new RadioListener());
 		}
 	}
+
 	private void clear() {
 		winningNumbers.clear();
 		winningNumbers.trimToSize();
@@ -391,31 +392,58 @@ public class Keno extends JFrame {
 		amountWon = 0;
 		i = 0;
 		for (var i = 0; i < buttons.length; i++) {
-			buttons[i].setText(String.valueOf(i+1));
+			buttons[i].setText(String.valueOf(i + 1));
 			buttons[i].setBackground(Color.blue);
 			buttons[i].setForeground(Color.yellow);
-			buttons[i].setIcon(null);  
+			buttons[i].setIcon(null);
 		}
 		dollarGroup.clearSelection();
 		spotsGroup.clearSelection();
 		numbersBet = 0;
 		amountBet = 0;
 	}
+
 	private void generateNumbers() {
 		winningNumbers.clear();
 		winningNumbers.trimToSize();
 		Collections.shuffle(shuffleNumbers);
 		if (numbersBet <= 0) {
 			JOptionPane.showMessageDialog(null, "Choose numbers to play");
-			clear();			
+			clear();
 		} else if (count != numbersBet) {
 			JOptionPane.showMessageDialog(null, "You must select " + numbersBet + " numbers");
 		} else {
 			for (var i = 0; i < 20; i++) {
 				winningNumbers.add(shuffleNumbers.get(i));
 			}
+			timer = new Timer(3000, new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					if (i < buttons.length) {
+						if (buttons[winningNumbers.get(i)].getIcon() != null) {
+							correct++;
+							buttons[winningNumbers.get(i)].setBackground(Color.GREEN);
+						} else {
+							buttons[winningNumbers.get(i)].setBackground(Color.RED);
+						}
+					}
+					if (i < 19) {
+						i++;
+					} else {
+						((Timer) e.getSource()).stop();
+						JOptionPane.showMessageDialog(null,
+								"The numbers you have selected and the numbers generated, have been successfully downloaded");
+						displayWinnings();
+					}
+				}
+			});
 		}
+
+	}
+
+	protected void displayWinnings() {
+		// TODO Auto-generated method stub
 		
 	}
-	
+
 }
